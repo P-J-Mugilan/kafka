@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: spring-boot-kafka-producer
+
+  kafka:
+    bootstrap-servers: localhost:9090
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+      acks: all
+      retries: 10
+
+      properties:
+        enable.idempotence: true
+
+app:
+  kafka:
+    topic: developer-test-topic
+
+server:
+  port: 8082
+
+# bootstrap-servers: Kafka broker address.
+#key-serializer: Converts message keys into strings.
+#value-serializer: Converts message values into strings.
+#acks: all: Requests acknowledgement from all in-sync replicas.
+#enable.idempotence: Helps prevent duplicate records caused by producer retries.
+#app.kafka.topic: Our custom application property.
